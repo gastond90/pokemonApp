@@ -1,0 +1,15 @@
+export const GET_POKEMONS = "GET_POKEMONS";
+export const FILTER_BY_CREATE = "FILTER_BY_CREATE";
+export const ORDER_BY_NAME = "ORDER_BY_NAME";
+export const FILTER_BY_NAME = "FILTER_BY_NAME";
+export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
+/* export const GET_DETAIL = "GET_DETAIL"; */
+/* export const POST_VIDEOGAME = "POST_VIDEOGAME"; */
+export const GET_TYPES = "GET_TYPES";
+/* export const TOP_5 = "TOP_5"; */
+export const ORDER_BY_SPEED = "ORDER_BY_SPEED";
+export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
+export const ORDER_BY_HP = "ORDER_BY_HP";
+export const ORDER_BY_DEFENSE= "ORDER_BY_DEFENSE";
+export const GET_MOVIES= "GET_MOVIES";
+export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
