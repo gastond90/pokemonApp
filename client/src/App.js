@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import Movies from './Components/Movies';
 import { SearchBar } from './Components/SearchBar';
 import Games from './Components/Games';
+import Footer from './Components/Footer';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
     <Route  path = '/home/games' element = {<Games/>}/>
       </Routes>
     </div>
+    <Footer/>
     </BrowserRouter>
   );
 }

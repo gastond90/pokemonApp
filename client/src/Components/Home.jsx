@@ -19,7 +19,7 @@ import "./Home.css";
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
-  const alltypes = useSelector((state) => state.types);
+  /*  const alltypes = useSelector((state) => state.types); */
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
@@ -41,7 +41,7 @@ export default function Home() {
   }
   useEffect(() => {
     dispatch(getPokemons());
-    dispatch(getTypes());
+    /*  dispatch(getTypes()); */
   }, []);
 
   function handleClick(e) {
@@ -89,42 +89,44 @@ export default function Home() {
     <div className="home">
       <div className="home">
         <div>
-          <h1></h1>
-        </div>
-
-        <div>
-          {/*  <Link to="/videogame">
-            <button className= "botoncrearjuego">CREAR JUEGO</button>
-          </Link> */}
-          <div></div>
           <button
             onClick={(e) => {
               handleClick(e);
             }}
             className="botonver"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
           >
-            {" "}
-            Clean Filters{" "}
+            Clean Filters
           </button>
+          {/*  {" "}
+            Clean Filters{" "}
+          </button> */}
         </div>
 
         <div className="content-select">
           <Link to={"/home/pokedex"}>
             {" "}
-            <button>Pokédex</button>{" "}
+            {/* <button>Pokédex</button>{" "} */}
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+              Pokédex
+            </button>
           </Link>
         </div>
         <div className="content-select">
           <Link to={"/home/movies"}>
             {" "}
-            <button>Movies</button>{" "}
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+              Movies
+            </button>
           </Link>
         </div>
 
         <div className="content-select">
           <Link to={"/home/games"}>
             {" "}
-            <button>Games</button>{" "}
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+              Games
+            </button>
           </Link>
         </div>
       </div>
