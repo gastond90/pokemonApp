@@ -95,7 +95,7 @@
 	div#bg_curve2_left
 	{
 		width: 400px;
-		height: 420px;
+		height: 520px;
 		background-color: #c00d0d;
 
 		box-shadow: -10px 9px #5e0000;
@@ -705,7 +705,7 @@
 	div#bg_curve2_right
 	{
 		width: 350px;
-		height: 420px;
+		height: 520px;
 		background-color: #c00d0d;
 
 		border-bottom-right-radius: 30px;
@@ -721,7 +721,7 @@
 
 	div#stats
 	{
-		height: 130px;
+		height: 230px;
 		width: 280px;
 		padding: 10px;
 		background-color: #30da0c;

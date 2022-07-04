@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getPokemons,
-  getTypes,
   orderByName,
   orderByAttack,
   orderByDefense,
@@ -15,11 +14,12 @@ import Card from "./Card";
 import { Paginated } from "./Paginated";
 import { FilterByType } from "./FilterByType";
 import "./Home.css";
+import { FilterByAttack } from "./FilterByAttack";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
-  /*  const alltypes = useSelector((state) => state.types); */
+ /*  const allPokemons = useSelector((state) => state.allPokemons); */
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
@@ -41,17 +41,12 @@ export default function Home() {
   }
   useEffect(() => {
     dispatch(getPokemons());
-    /*  dispatch(getTypes()); */
   }, []);
 
   function handleClick(e) {
     e.preventDefault();
     dispatch(getPokemons());
   }
-
-  /* function handleFilterCreated(e) {
-    dispatch(getCreated(e.target.value));
-  } */
 
   function handleSort(e) {
     e.preventDefault();
@@ -88,15 +83,15 @@ export default function Home() {
   return (
     <div className="home">
       <div className="home">
-        <div>
+        <div className="content-select">
           <button
             onClick={(e) => {
               handleClick(e);
             }}
-            className="botonver"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+            /* className="botonver" */
+            className="bg-indigo-800 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded-md dark:border-gray-600 "
           >
-            Clean Filters
+            Reset Filters
           </button>
           {/*  {" "}
             Clean Filters{" "}
@@ -106,8 +101,8 @@ export default function Home() {
         <div className="content-select">
           <Link to={"/home/pokedex"}>
             {" "}
-            {/* <button>Pokédex</button>{" "} */}
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            
+            <button className="bg-indigo-800 hover:bg-blue-700  text-sm text-white font-bold py-2 px-4 rounded-md">
               Pokédex
             </button>
           </Link>
@@ -115,7 +110,7 @@ export default function Home() {
         <div className="content-select">
           <Link to={"/home/movies"}>
             {" "}
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            <button className="bg-indigo-800 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded-md  ">
               Movies
             </button>
           </Link>
@@ -124,7 +119,7 @@ export default function Home() {
         <div className="content-select">
           <Link to={"/home/games"}>
             {" "}
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            <button className="bg-indigo-800 hover:bg-blue-700  text-sm text-white font-bold py-2 px-4 rounded-md ">
               Games
             </button>
           </Link>
@@ -132,18 +127,16 @@ export default function Home() {
       </div>
 
       <div>
-        {/* <div className="content-select">
-        <select onChange={(e) => handleFilterCreated(e)}>
-        <option hidden={true}>Origen</option>
-          <option value="All">Todos</option>
-          <option value="Created">Creados</option>
-          <option value="Existing">Originales</option>
-        </select>
-        </div> */}
+        
         <FilterByType />
-
+       
         <div className="content-select">
-          <select onChange={(e) => handleSort(e)}>
+        <select
+        onChange={(e) => handleSort(e)}
+          id="small"
+          className="block p-2 mb-6 text-sm text-gray-900 font-bold bg-indigo-800 rounded-lg border border-indigo-800 focus:ring-blue-500 focus:border-blue-500 dark:bg-indigo-800 dark:border-gray-600 dark:placeholder-indigo-800 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+         
             <option hidden={true}>Alphabetically</option>
             <option value="az">A-Z</option>
             <option value="za">Z-A</option>
@@ -151,15 +144,24 @@ export default function Home() {
         </div>
 
         <div className="content-select">
-          <select onChange={(e) => handleSortAttack(e)}>
+     {/* <select
+        onChange={(e) => handleSortAttack(e)}
+          id="small"
+          className="block p-2 mb-6 text-sm text-gray-900 font-bold bg-indigo-800 rounded-lg border border-indigo-800 focus:ring-blue-500 focus:border-blue-500 dark:bg-indigo-800 dark:border-gray-600 dark:placeholder-indigo-800 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
             <option hidden={true}>By Attack</option>
             <option value="Max-Min">Strongest</option>
             <option value="Min-Max">Weakest</option>
-          </select>
+          </select>  */}
+           <FilterByAttack/>
         </div>
 
         <div className="content-select">
-          <select onChange={(e) => handleSortDefense(e)}>
+        <select
+        onChange={(e) => handleSortDefense(e)}
+          id="small"
+          className="block p-2 mb-6 text-sm text-gray-900 font-bold bg-indigo-800 rounded-lg border border-indigo-800 focus:ring-blue-500 focus:border-blue-500 dark:bg-indigo-800 dark:border-gray-600 dark:placeholder-indigo-800 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
             <option hidden={true}>By Defense</option>
             <option value="Max-Min">Strongest</option>
             <option value="Min-Max">Weakest</option>
@@ -167,7 +169,11 @@ export default function Home() {
         </div>
 
         <div className="content-select">
-          <select onChange={(e) => handleSortSpeed(e)}>
+        <select
+        onChange={(e) => handleSortSpeed(e)}
+          id="small"
+          className="block p-2 mb-6 text-sm text-gray-900 font-bold bg-indigo-800 rounded-lg border border-indigo-800 focus:ring-blue-500 focus:border-blue-500 dark:bg-indigo-800 dark:border-gray-600 dark:placeholder-indigo-800 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
             <option hidden={true}>By Speed</option>
             <option value="Max-Min">Fastest</option>
             <option value="Min-Max">Slowest</option>
@@ -175,72 +181,17 @@ export default function Home() {
         </div>
 
         <div className="content-select">
-          <select onChange={(e) => handleSortHp(e)}>
+        <select
+        onChange={(e) => handleSortHp(e)}
+          id="small"
+          className="block p-2 mb-6 text-sm text-gray-900 font-bold bg-indigo-800 rounded-lg border border-indigo-800 focus:ring-blue-500 focus:border-blue-500 dark:bg-indigo-800 dark:border-gray-600 dark:placeholder-indigo-800 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
             <option hidden={true}>By HP</option>
             <option value="Max-Min">Strongest</option>
             <option value="Min-Max">Weakest</option>
           </select>
         </div>
 
-        {/* <div id="cards">
-          <figure className="card card--normal">
-            <div className="card__image-container">
-              <img
-                src="https://cdn.bulbagarden.net/upload/thumb/e/e2/133Eevee.png/1200px-133Eevee.png"
-                alt="Eevee"
-                className="card__image"
-              />
-            </div>
-
-            <figcaption className="card__caption">
-              <h1 className="card__name">Eevee</h1>
-
-              <h3 className="card__type">normal</h3>
-
-              <table className="card__stats">
-                <tbody>
-                  <tr>
-                    <th>HP</th>
-                    <td>55</td>
-                  </tr>
-                  <tr>
-                    <th>Attack</th>
-                    <td>55</td>
-                  </tr>
-
-                  <tr>
-                    <th>Defense</th>
-                    <td>50</td>
-                  </tr>
-
-                  <tr>
-                    <th>Special Attack</th>
-                    <td>45</td>
-                  </tr>
-                  <tr>
-                    <th>Special Defense</th>
-                    <td>65</td>
-                  </tr>
-                  <tr>
-                    <th>Speed</th>
-                    <td>55</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <div className="card__abilities">
-                <h4 className="card__ability">
-                  <span className="card__label">Ability</span>
-                  Run Away
-                </h4>
-                <h4 className="card__ability">
-                  <span className="card__label">Hidden Ability</span>
-                  Anticipation
-                </h4>
-              </div>
-            </figcaption>
-          </figure>
-        </div> */}
 
         <Paginated
           videogamesPerPage={videogamesPerPage}
@@ -270,8 +221,8 @@ export default function Home() {
             currentPokemons &&
             currentPokemons.map((e) => {
               return (
-                <div>
-                  <Link /* className="card" */ key={e.id} to={`/home/${e.id}`}>
+                <div key={e.id}>
+             
                     <Card
                       className="cards"
                       key={e.id}
@@ -288,7 +239,7 @@ export default function Home() {
                       type={e.type?.join(",")}
                       weight={e.weight}
                     />
-                  </Link>
+                  
                 </div>
               );
             })
